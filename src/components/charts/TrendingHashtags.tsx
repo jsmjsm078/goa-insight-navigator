@@ -2,6 +2,8 @@
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { useState } from "react";
 
 // Enhanced data structure including SNS distribution
 const data = [
@@ -70,47 +72,57 @@ const data = [
   }
 ];
 
+// Custom component to display distribution data
+const DistributionChart = ({ data }: { data: { platform: string; count: number }[] }) => (
+  <div className="space-y-2">
+    <h4 className="font-medium text-sm">Platform Distribution</h4>
+    <div className="h-32">
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart data={data} margin={{ top: 5, right: 5, bottom: 20, left: 0 }}>
+          <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+          <XAxis 
+            dataKey="platform" 
+            tick={{ fill: '#666', fontSize: 10 }}
+            angle={-45}
+            textAnchor="end"
+          />
+          <YAxis tick={{ fill: '#666', fontSize: 10 }} />
+          <Tooltip 
+            contentStyle={{ backgroundColor: 'white', borderRadius: '8px', border: '1px solid #ddd' }}
+          />
+          <Bar dataKey="count" fill="#9b87f5" radius={[4, 4, 0, 0]} />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  </div>
+);
+
+// Alternative approach using Popover for better visibility
 const CustomTooltip = ({ active, payload }: any) => {
   if (!active || !payload || !payload[0]) return null;
 
   const hashtag = payload[0].payload;
 
   return (
-    <HoverCard>
-      <HoverCardTrigger asChild>
-        <div className="bg-white p-2 rounded-lg shadow-lg border">
-          <p className="font-medium text-sm">{hashtag.hashtag}</p>
-          <p className="text-sm text-muted-foreground">Total: {hashtag.count}</p>
-        </div>
-      </HoverCardTrigger>
-      <HoverCardContent className="w-80">
-        <div className="space-y-2">
-          <h4 className="font-medium text-sm">Platform Distribution</h4>
-          <div className="h-32">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={hashtag.sns} margin={{ top: 5, right: 5, bottom: 20, left: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
-                <XAxis 
-                  dataKey="platform" 
-                  tick={{ fill: '#666', fontSize: 10 }}
-                  angle={-45}
-                  textAnchor="end"
-                />
-                <YAxis tick={{ fill: '#666', fontSize: 10 }} />
-                <Tooltip 
-                  contentStyle={{ backgroundColor: 'white', borderRadius: '8px', border: '1px solid #ddd' }}
-                />
-                <Bar dataKey="count" fill="#9b87f5" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
-      </HoverCardContent>
-    </HoverCard>
+    <div className="bg-white p-2 rounded-lg shadow-lg border">
+      <p className="font-medium text-sm">{hashtag.hashtag}</p>
+      <p className="text-sm text-muted-foreground">Total: {hashtag.count}</p>
+      <p className="text-xs mt-1 text-blue-500">Click for platform details</p>
+    </div>
   );
 };
 
 export function TrendingHashtags() {
+  const [selectedHashtag, setSelectedHashtag] = useState<(typeof data)[0] | null>(null);
+  const [openPopover, setOpenPopover] = useState(false);
+  
+  const handleBarClick = (data: any) => {
+    if (data && data.activePayload && data.activePayload[0]) {
+      setSelectedHashtag(data.activePayload[0].payload);
+      setOpenPopover(true);
+    }
+  };
+
   return (
     <Card className="w-full shadow-md">
       <CardHeader className="pb-2">
@@ -127,6 +139,7 @@ export function TrendingHashtags() {
                 left: 20,
                 bottom: 60,
               }}
+              onClick={handleBarClick}
             >
               <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
               <XAxis 
@@ -148,8 +161,24 @@ export function TrendingHashtags() {
             </BarChart>
           </ResponsiveContainer>
         </div>
+
+        {/* Popover showing platform distribution */}
+        <Popover open={openPopover} onOpenChange={setOpenPopover}>
+          <PopoverTrigger className="hidden">Open</PopoverTrigger>
+          <PopoverContent className="w-80 p-0" side="top">
+            {selectedHashtag && (
+              <div className="p-4">
+                <h3 className="font-medium mb-2">{selectedHashtag.hashtag} Distribution</h3>
+                <DistributionChart data={selectedHashtag.sns} />
+              </div>
+            )}
+          </PopoverContent>
+        </Popover>
+
+        <div className="mt-4 text-center text-sm text-gray-500">
+          Click on any bar to see detailed platform distribution
+        </div>
       </CardContent>
     </Card>
   );
 }
-
