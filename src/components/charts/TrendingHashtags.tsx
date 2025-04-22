@@ -1,11 +1,10 @@
-
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { useState } from "react";
+import { DateRange } from "react-day-picker";
+import { DateRangeFilter } from "../filters/DateRangeFilter";
 
-// Enhanced data structure including SNS distribution
 const data = [
   { 
     hashtag: '#BeachLife', 
@@ -72,7 +71,6 @@ const data = [
   }
 ];
 
-// Custom component to display distribution data
 const DistributionChart = ({ data }: { data: { platform: string; count: number }[] }) => (
   <div className="space-y-2">
     <h4 className="font-medium text-sm">Platform Distribution</h4>
@@ -97,7 +95,6 @@ const DistributionChart = ({ data }: { data: { platform: string; count: number }
   </div>
 );
 
-// Alternative approach using Popover for better visibility
 const CustomTooltip = ({ active, payload }: any) => {
   if (!active || !payload || !payload[0]) return null;
 
@@ -115,6 +112,7 @@ const CustomTooltip = ({ active, payload }: any) => {
 export function TrendingHashtags() {
   const [selectedHashtag, setSelectedHashtag] = useState<(typeof data)[0] | null>(null);
   const [openPopover, setOpenPopover] = useState(false);
+  const [dateRange, setDateRange] = useState<DateRange>();
   
   const handleBarClick = (data: any) => {
     if (data && data.activePayload && data.activePayload[0]) {
@@ -123,16 +121,23 @@ export function TrendingHashtags() {
     }
   };
 
+  const filteredData = dateRange?.from && dateRange?.to
+    ? data.filter(item => {
+        return true;
+      })
+    : data;
+
   return (
     <Card className="w-full shadow-md">
       <CardHeader className="pb-2">
         <CardTitle className="text-xl font-bold text-gray-800">Trending Hashtags</CardTitle>
+        <DateRangeFilter date={dateRange} onDateChange={setDateRange} />
       </CardHeader>
       <CardContent>
         <div className="h-[300px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
-              data={data}
+              data={filteredData}
               margin={{
                 top: 5,
                 right: 30,
@@ -162,7 +167,6 @@ export function TrendingHashtags() {
           </ResponsiveContainer>
         </div>
 
-        {/* Popover showing platform distribution */}
         <Popover open={openPopover} onOpenChange={setOpenPopover}>
           <PopoverTrigger className="hidden">Open</PopoverTrigger>
           <PopoverContent className="w-80 p-0" side="top">
