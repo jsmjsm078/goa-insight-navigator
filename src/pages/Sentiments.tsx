@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { SentimentMeter } from "@/components/sentiment/SentimentMeter";
@@ -86,14 +87,26 @@ const Sentiments = () => {
                 <WordMap
                   title="Positive Keywords"
                   words={sampleWords}
-                  filterOptions={SNS_PLATFORMS}
-                  onFilterChange={setSnsPlatform}
+                  filterOptions={[
+                    {
+                      label: "Platform",
+                      options: SNS_PLATFORMS,
+                      value: snsPlatform,
+                      onChange: setSnsPlatform,
+                    }
+                  ]}
                 />
                 <WordMap
                   title="Negative Keywords"
                   words={sampleWords}
-                  filterOptions={SNS_PLATFORMS}
-                  onFilterChange={setSnsPlatform}
+                  filterOptions={[
+                    {
+                      label: "Platform",
+                      options: SNS_PLATFORMS,
+                      value: snsPlatform,
+                      onChange: setSnsPlatform,
+                    }
+                  ]}
                 />
               </div>
             </div>
