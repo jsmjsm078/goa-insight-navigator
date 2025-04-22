@@ -1,11 +1,9 @@
-
 import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { SentimentMeter } from "@/components/sentiment/SentimentMeter";
 import { SentimentBarChart } from "@/components/sentiment/SentimentBarChart";
 import { WordMap } from "@/components/sentiment/WordMap";
 
-// Sample data
 const SNS_PLATFORMS = [
   { value: "twitter", label: "Twitter" },
   { value: "facebook", label: "Facebook" },
@@ -112,18 +110,46 @@ const Sentiments = () => {
                 onFilterChange={setLocation}
               />
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <WordMap
-                  title="Positive Keywords"
-                  words={sampleWords}
-                  filterOptions={REVIEW_PLATFORMS}
-                  onFilterChange={setReviewPlatform}
-                />
-                <WordMap
-                  title="Negative Keywords"
-                  words={sampleWords}
-                  filterOptions={REVIEW_PLATFORMS}
-                  onFilterChange={setReviewPlatform}
-                />
+                <div className="space-y-6">
+                  <WordMap
+                    title="Positive Keywords"
+                    words={sampleWords}
+                    filterOptions={[
+                      {
+                        label: "Platform",
+                        options: REVIEW_PLATFORMS,
+                        value: reviewPlatform,
+                        onChange: setReviewPlatform,
+                      },
+                      {
+                        label: "Location",
+                        options: LOCATIONS,
+                        value: location,
+                        onChange: setLocation,
+                      },
+                    ]}
+                  />
+                </div>
+                <div className="space-y-6">
+                  <WordMap
+                    title="Negative Keywords"
+                    words={sampleWords}
+                    filterOptions={[
+                      {
+                        label: "Platform",
+                        options: REVIEW_PLATFORMS,
+                        value: reviewPlatform,
+                        onChange: setReviewPlatform,
+                      },
+                      {
+                        label: "Location",
+                        options: LOCATIONS,
+                        value: location,
+                        onChange: setLocation,
+                      },
+                    ]}
+                  />
+                </div>
               </div>
             </div>
           </section>
