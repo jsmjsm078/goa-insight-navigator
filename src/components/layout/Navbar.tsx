@@ -9,7 +9,7 @@ export function Navbar() {
   const navItems = [
     { name: "Home", icon: <Home size={20} />, path: "/" },
     { name: "Sentiments", path: "/sentiments" },
-    { name: "Surveys", path: "/surveys" }
+    { name: "Reviews", path: "/reviews" }  // Changed from "Surveys" to "Reviews"
   ];
 
   return (

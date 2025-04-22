@@ -2,27 +2,27 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-// Placeholder data for tourism trends
+// Updated data structure to show yearly trends
 const data = [
-  { month: 'Jan', instagram: 2400, twitter: 1800, facebook: 2200 },
-  { month: 'Feb', instagram: 2200, twitter: 1600, facebook: 2000 },
-  { month: 'Mar', instagram: 2800, twitter: 2000, facebook: 2400 },
-  { month: 'Apr', instagram: 3000, twitter: 2200, facebook: 2600 },
-  { month: 'May', instagram: 2600, twitter: 1900, facebook: 2300 },
-  { month: 'Jun', instagram: 2200, twitter: 1700, facebook: 2100 },
-  { month: 'Jul', instagram: 2800, twitter: 2100, facebook: 2500 },
-  { month: 'Aug', instagram: 3200, twitter: 2400, facebook: 2800 },
-  { month: 'Sep', instagram: 3600, twitter: 2700, facebook: 3100 },
-  { month: 'Oct', instagram: 3800, twitter: 2900, facebook: 3300 },
-  { month: 'Nov', instagram: 3400, twitter: 2600, facebook: 3000 },
-  { month: 'Dec', instagram: 3900, twitter: 3000, facebook: 3500 },
+  { month: 'Jan', y2023: 2400, y2024: 2800, y2025: 3200 },
+  { month: 'Feb', y2023: 2200, y2024: 2600, y2025: 3000 },
+  { month: 'Mar', y2023: 2800, y2024: 3200, y2025: 3600 },
+  { month: 'Apr', y2023: 3000, y2024: 3400, y2025: 3800 },
+  { month: 'May', y2023: 2600, y2024: 3000, y2025: 3400 },
+  { month: 'Jun', y2023: 2200, y2024: 2600, y2025: 3000 },
+  { month: 'Jul', y2023: 2800, y2024: 3200, y2025: 3600 },
+  { month: 'Aug', y2023: 3200, y2024: 3600, y2025: 4000 },
+  { month: 'Sep', y2023: 3600, y2024: 4000, y2025: 4400 },
+  { month: 'Oct', y2023: 3800, y2024: 4200, y2025: 4600 },
+  { month: 'Nov', y2023: 3400, y2024: 3800, y2025: 4200 },
+  { month: 'Dec', y2023: 3900, y2024: 4300, y2025: 4700 },
 ];
 
 export function TourismTrends() {
   return (
     <Card className="w-full shadow-md">
       <CardHeader className="pb-2">
-        <CardTitle className="text-xl font-bold text-gray-800">Tourism Trends</CardTitle>
+        <CardTitle className="text-xl font-bold text-gray-800">Tourism Trends (Yearly Comparison)</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="h-[300px] w-full">
@@ -40,13 +40,13 @@ export function TourismTrends() {
               <XAxis dataKey="month" tick={{ fill: '#666', fontSize: 12 }} />
               <YAxis 
                 tick={{ fill: '#666', fontSize: 12 }}
-                label={{ value: 'Mentions', angle: -90, position: 'insideLeft', fill: '#666' }}
+                label={{ value: 'Cumulative Posts', angle: -90, position: 'insideLeft', fill: '#666' }}
               />
               <Tooltip contentStyle={{ backgroundColor: 'white', borderRadius: '8px', border: '1px solid #ddd' }} />
               <Legend iconType="circle" />
-              <Line type="monotone" dataKey="instagram" stroke="#0EA5E9" strokeWidth={2} dot={{ r: 4 }} activeDot={{ r: 6 }} />
-              <Line type="monotone" dataKey="twitter" stroke="#F97316" strokeWidth={2} dot={{ r: 4 }} activeDot={{ r: 6 }} />
-              <Line type="monotone" dataKey="facebook" stroke="#65A30D" strokeWidth={2} dot={{ r: 4 }} activeDot={{ r: 6 }} />
+              <Line type="monotone" dataKey="y2023" stroke="#0EA5E9" strokeWidth={2} name="2023" dot={{ r: 4 }} activeDot={{ r: 6 }} />
+              <Line type="monotone" dataKey="y2024" stroke="#F97316" strokeWidth={2} name="2024" dot={{ r: 4 }} activeDot={{ r: 6 }} />
+              <Line type="monotone" dataKey="y2025" stroke="#65A30D" strokeWidth={2} name="2025" dot={{ r: 4 }} activeDot={{ r: 6 }} />
             </LineChart>
           </ResponsiveContainer>
         </div>
