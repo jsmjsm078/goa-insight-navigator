@@ -50,7 +50,14 @@ const Sentiments = () => {
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="mb-8">
-          <SentimentMeter title="Social Media" score={75} />
+          <SentimentMeter 
+            title="Social Media" 
+            scores={{
+              positive: 45,
+              neutral: 30,
+              negative: 25
+            }} 
+          />
         </div>
 
         <div className="space-y-8">

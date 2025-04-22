@@ -48,7 +48,14 @@ const Reviews = () => {
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="mb-8">
-          <SentimentMeter title="Reviews" score={82} />
+          <SentimentMeter 
+            title="Reviews" 
+            scores={{
+              positive: 50,
+              neutral: 35,
+              negative: 15
+            }} 
+          />
         </div>
 
         <section>
