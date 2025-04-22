@@ -1,12 +1,12 @@
 
-import { Progress } from "@/components/ui/progress";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { NPSMeter } from "./NPSMeter";
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
+import { NPSGauge } from "./NPSGauge";
 
 interface SentimentScore {
   positive: number;
-  negative: number;
   neutral: number;
+  negative: number;
 }
 
 interface SentimentMeterProps {
@@ -15,7 +15,13 @@ interface SentimentMeterProps {
 }
 
 export function SentimentMeter({ title, scores }: SentimentMeterProps) {
-  // Calculate NPS based on sentiment scores
+  const data = [
+    { name: 'Positive', value: scores.positive, color: '#4CAF50' },
+    { name: 'Neutral', value: scores.neutral, color: '#FFA726' },
+    { name: 'Negative', value: scores.negative, color: '#F44336' }
+  ];
+
+  // Calculate NPS score
   const npsScore = Math.round(scores.positive - scores.negative);
 
   return (
@@ -23,41 +29,40 @@ export function SentimentMeter({ title, scores }: SentimentMeterProps) {
       <CardHeader className="pb-2">
         <CardTitle className="text-lg font-medium">{title} Sentiment Score</CardTitle>
       </CardHeader>
-      <CardContent className="flex items-center gap-6">
-        <NPSMeter score={npsScore} />
+      <CardContent className="flex items-center justify-between gap-6">
+        <div className="h-[200px] w-[200px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                data={data}
+                cx="50%"
+                cy="50%"
+                innerRadius={40}
+                outerRadius={80}
+                paddingAngle={2}
+                dataKey="value"
+              >
+                {data.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              <Tooltip />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
         
-        <div className="flex-1 space-y-4">
-          <div className="h-8 w-full flex rounded-full overflow-hidden">
-            <div 
-              className="bg-green-500 transition-all duration-500"
-              style={{ width: `${scores.positive}%` }}
-            />
-            <div 
-              className="bg-yellow-500 transition-all duration-500"
-              style={{ width: `${scores.neutral}%` }}
-            />
-            <div 
-              className="bg-red-500 transition-all duration-500"
-              style={{ width: `${scores.negative}%` }}
-            />
-          </div>
-          
-          <div className="flex justify-between text-sm">
-            <div className="flex gap-4">
-              <span className="flex items-center gap-1">
-                <div className="w-3 h-3 rounded-full bg-green-500" />
-                <span className="text-green-600">{scores.positive}% Positive</span>
-              </span>
-              <span className="flex items-center gap-1">
-                <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                <span className="text-yellow-600">{scores.neutral}% Neutral</span>
-              </span>
-              <span className="flex items-center gap-1">
-                <div className="w-3 h-3 rounded-full bg-red-500" />
-                <span className="text-red-600">{scores.negative}% Negative</span>
-              </span>
+        <NPSGauge score={npsScore} />
+        
+        <div className="flex flex-col gap-2">
+          {data.map((item) => (
+            <div key={item.name} className="flex items-center gap-2">
+              <div 
+                className="h-3 w-3 rounded-full" 
+                style={{ backgroundColor: item.color }}
+              />
+              <span className="text-sm">{item.name}: {item.value}%</span>
             </div>
-          </div>
+          ))}
         </div>
       </CardContent>
     </Card>
