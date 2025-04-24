@@ -6,11 +6,11 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 // Popular locations in Goa with their coordinates
 const LOCATIONS = [
-  { name: "Baga Beach", coordinates: [73.7544, 15.5566], activity: Math.floor(Math.random() * 500) + 100 },
-  { name: "Fort Aguada", coordinates: [73.7708, 15.4909], activity: Math.floor(Math.random() * 500) + 100 },
-  { name: "Dudhsagar Falls", coordinates: [74.3145, 15.3147], activity: Math.floor(Math.random() * 500) + 100 },
-  { name: "Basilica of Bom Jesus", coordinates: [73.9115, 15.5009], activity: Math.floor(Math.random() * 500) + 100 },
-  { name: "Calangute Beach", coordinates: [73.7527, 15.5477], activity: Math.floor(Math.random() * 500) + 100 }
+  { name: "Baga Beach", coordinates: [73.7544, 15.5566] as [number, number], activity: Math.floor(Math.random() * 500) + 100 },
+  { name: "Fort Aguada", coordinates: [73.7708, 15.4909] as [number, number], activity: Math.floor(Math.random() * 500) + 100 },
+  { name: "Dudhsagar Falls", coordinates: [74.3145, 15.3147] as [number, number], activity: Math.floor(Math.random() * 500) + 100 },
+  { name: "Basilica of Bom Jesus", coordinates: [73.9115, 15.5009] as [number, number], activity: Math.floor(Math.random() * 500) + 100 },
+  { name: "Calangute Beach", coordinates: [73.7527, 15.5477] as [number, number], activity: Math.floor(Math.random() * 500) + 100 }
 ];
 
 export function ActivityMap() {
@@ -26,7 +26,7 @@ export function ActivityMap() {
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v12',
-      center: [73.8278, 15.4989], // Centered on Goa
+      center: [73.8278, 15.4989] as [number, number], // Centered on Goa
       zoom: 9.5 // Adjusted zoom to show more of Goa
     });
 
