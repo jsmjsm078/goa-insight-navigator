@@ -1,9 +1,9 @@
-
 import { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
 import { SentimentMeter } from "@/components/sentiment/SentimentMeter";
 import { SentimentBarChart } from "@/components/sentiment/SentimentBarChart";
 import { WordMap } from "@/components/sentiment/WordMap";
+import { VideoInsights } from "@/components/sentiment/VideoInsights";
 
 const SNS_PLATFORMS = [
   { value: "twitter", label: "Twitter" },
@@ -99,6 +99,15 @@ const Sentiments = () => {
               </div>
             </div>
           </section>
+
+          {/* Video Insights Section */}
+          <div className="space-y-8 mt-8">
+            <section>
+              <div className="grid grid-cols-1 gap-6">
+                <VideoInsights />
+              </div>
+            </section>
+          </div>
         </div>
       </main>
     </div>
