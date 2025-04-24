@@ -1,10 +1,10 @@
+
 import { TrendingHashtags } from "@/components/charts/TrendingHashtags";
 import { KeyTalkingPoints } from "@/components/charts/KeyTalkingPoints";
 import { TourismTrends } from "@/components/charts/TourismTrends";
 import { Navbar } from "@/components/layout/Navbar";
 import { DashboardHeading } from "@/components/ui/dashboard-heading";
 import { Card } from "@/components/ui/card";
-import { ActivityMap } from "@/components/maps/ActivityMap";
 
 const Index = () => {
   return (
@@ -53,10 +53,6 @@ const Index = () => {
           
           <section className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <TourismTrends />
-          </section>
-          
-          <section className="animate-fade-in" style={{ animationDelay: "0.4s" }}>
-            <ActivityMap />
           </section>
         </div>
       </main>
