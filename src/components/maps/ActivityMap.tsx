@@ -4,6 +4,15 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
+// Popular locations in Goa with their coordinates
+const LOCATIONS = [
+  { name: "Baga Beach", coordinates: [73.7544, 15.5566], activity: Math.floor(Math.random() * 500) + 100 },
+  { name: "Fort Aguada", coordinates: [73.7708, 15.4909], activity: Math.floor(Math.random() * 500) + 100 },
+  { name: "Dudhsagar Falls", coordinates: [74.3145, 15.3147], activity: Math.floor(Math.random() * 500) + 100 },
+  { name: "Basilica of Bom Jesus", coordinates: [73.9115, 15.5009], activity: Math.floor(Math.random() * 500) + 100 },
+  { name: "Calangute Beach", coordinates: [73.7527, 15.5477], activity: Math.floor(Math.random() * 500) + 100 }
+];
+
 export function ActivityMap() {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
@@ -18,14 +27,22 @@ export function ActivityMap() {
       container: mapContainer.current,
       style: 'mapbox://styles/mapbox/streets-v12',
       center: [73.8278, 15.4989], // Centered on Goa
-      zoom: 10
+      zoom: 9.5 // Adjusted zoom to show more of Goa
     });
 
-    // Add marker
-    new mapboxgl.Marker()
-      .setLngLat([73.8278, 15.4989])
-      .setPopup(new mapboxgl.Popup().setHTML('<h3>1000</h3>'))
-      .addTo(map.current);
+    // Add markers for each location
+    LOCATIONS.forEach(location => {
+      const popup = new mapboxgl.Popup({ offset: 25 })
+        .setHTML(`<div class="p-2">
+          <h3 class="font-bold">${location.name}</h3>
+          <p class="text-sm">Activity count: ${location.activity}</p>
+        </div>`);
+
+      new mapboxgl.Marker({ color: '#FF6B6B' })
+        .setLngLat(location.coordinates)
+        .setPopup(popup)
+        .addTo(map.current!);
+    });
 
     // Add navigation controls
     map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
@@ -38,7 +55,7 @@ export function ActivityMap() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-xl font-bold">Activities</CardTitle>
+        <CardTitle className="text-xl font-bold">Popular Locations</CardTitle>
       </CardHeader>
       <CardContent>
         {!mapboxToken && (
