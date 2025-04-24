@@ -21,48 +21,50 @@ export function SentimentMeter({ title, scores }: SentimentMeterProps) {
     { name: 'Negative', value: scores.negative, color: '#F44336' }
   ];
 
-  // Calculate NPS score
-  const npsScore = Math.round(scores.positive - scores.negative);
+  // Calculate NPS score scaled to -10 to +10 range
+  const npsScore = Math.round((scores.positive - scores.negative) / 10);
 
   return (
     <Card>
       <CardHeader className="pb-2">
-        <CardTitle className="text-lg font-medium">{title} Sentiment Score</CardTitle>
+        <CardTitle className="text-lg font-medium">{title}</CardTitle>
       </CardHeader>
-      <CardContent className="flex items-center justify-between gap-6">
-        <div className="h-[200px] w-[200px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart>
-              <Pie
-                data={data}
-                cx="50%"
-                cy="50%"
-                innerRadius={40}
-                outerRadius={80}
-                paddingAngle={2}
-                dataKey="value"
-              >
-                {data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={entry.color} />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-        
+      <CardContent className="flex items-center justify-between gap-8">
         <NPSGauge score={npsScore} />
         
-        <div className="flex flex-col gap-2">
-          {data.map((item) => (
-            <div key={item.name} className="flex items-center gap-2">
-              <div 
-                className="h-3 w-3 rounded-full" 
-                style={{ backgroundColor: item.color }}
-              />
-              <span className="text-sm">{item.name}: {item.value}%</span>
-            </div>
-          ))}
+        <div className="flex items-center gap-8">
+          <div className="h-[200px] w-[200px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={data}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={40}
+                  outerRadius={80}
+                  paddingAngle={2}
+                  dataKey="value"
+                >
+                  {data.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+          
+          <div className="flex flex-col gap-2">
+            {data.map((item) => (
+              <div key={item.name} className="flex items-center gap-2">
+                <div 
+                  className="h-3 w-3 rounded-full" 
+                  style={{ backgroundColor: item.color }}
+                />
+                <span className="text-sm">{item.name}: {item.value}%</span>
+              </div>
+            ))}
+          </div>
         </div>
       </CardContent>
     </Card>
