@@ -14,8 +14,8 @@ export function ActivityHeatmap() {
       <CardHeader>
         <CardTitle>Location Map</CardTitle>
       </CardHeader>
-      <CardContent className="h-[calc(100%-5rem)]">
-        <div className="relative w-full h-full rounded-lg overflow-hidden">
+      <CardContent className="pb-6">
+        <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
           {/* Map Background */}
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-90" 
