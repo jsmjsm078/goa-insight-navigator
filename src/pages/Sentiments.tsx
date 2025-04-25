@@ -40,65 +40,60 @@ const Sentiments = () => {
       <Navbar />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="mb-8">
-          <SentimentMeter 
-            title="Social Media" 
-            scores={{
-              positive: 45,
-              neutral: 30,
-              negative: 25
-            }} 
-          />
-        </div>
-
         <div className="space-y-8">
           {/* SNS Section */}
           <section>
             <h2 className="text-2xl font-semibold mb-6">Social Network Sentiment</h2>
-            <div className="grid grid-cols-1 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+              <SentimentMeter 
+                title="Social Media" 
+                scores={{
+                  positive: 45,
+                  neutral: 30,
+                  negative: 25
+                }} 
+              />
               <SentimentBarChart
                 title="SNS Sentiment Distribution"
                 data={sampleBarData}
                 filterOptions={TOPICS}
                 onFilterChange={setTopic}
               />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <WordMap
-                  title="Positive Keywords"
-                  words={sampleWords}
-                  filterOptions={[
-                    {
-                      label: "Platform",
-                      options: SNS_PLATFORMS,
-                      value: snsPlatform,
-                      onChange: setSnsPlatform,
-                    }
-                  ]}
-                />
-                <WordMap
-                  title="Negative Keywords"
-                  words={sampleWords}
-                  filterOptions={[
-                    {
-                      label: "Platform",
-                      options: SNS_PLATFORMS,
-                      value: snsPlatform,
-                      onChange: setSnsPlatform,
-                    }
-                  ]}
-                />
-              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <WordMap
+                title="Positive Keywords"
+                words={sampleWords}
+                filterOptions={[
+                  {
+                    label: "Platform",
+                    options: SNS_PLATFORMS,
+                    value: snsPlatform,
+                    onChange: setSnsPlatform,
+                  }
+                ]}
+              />
+              <WordMap
+                title="Negative Keywords"
+                words={sampleWords}
+                filterOptions={[
+                  {
+                    label: "Platform",
+                    options: SNS_PLATFORMS,
+                    value: snsPlatform,
+                    onChange: setSnsPlatform,
+                  }
+                ]}
+              />
             </div>
           </section>
 
           {/* Video Insights Section */}
-          <div className="space-y-8 mt-8">
-            <section>
-              <div className="grid grid-cols-1 gap-6">
-                <VideoInsights />
-              </div>
-            </section>
-          </div>
+          <section>
+            <div className="grid grid-cols-1 gap-6">
+              <VideoInsights />
+            </div>
+          </section>
         </div>
       </main>
     </div>
