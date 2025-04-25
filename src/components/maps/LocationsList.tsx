@@ -4,13 +4,8 @@ import { MapPin } from "lucide-react";
 
 const locations = [
   { name: "Baga Beach", mentions: 2456 },
-  { name: "Calangute Beach", mentions: 2123 },
   { name: "Fort Aguada", mentions: 1890 },
-  { name: "Dudhsagar Falls", mentions: 1654 },
-  { name: "Anjuna Beach", mentions: 1432 },
-  { name: "Basilica of Bom Jesus", mentions: 1234 },
-  { name: "Palolem Beach", mentions: 1098 },
-  { name: "Chapora Fort", mentions: 987 }
+  { name: "Dudhsagar Falls", mentions: 1654 }
 ];
 
 export function LocationsList() {

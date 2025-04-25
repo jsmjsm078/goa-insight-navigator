@@ -20,7 +20,7 @@ export function ActivityHeatmap() {
           <div 
             className="absolute inset-0 bg-cover bg-center opacity-90" 
             style={{ 
-              backgroundImage: 'url("https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&q=80")',
+              backgroundImage: 'url("/lovable-uploads/49b75e28-cfb7-4450-9fb0-a9649fe3622e.png")',
               filter: 'saturate(1.2) brightness(1.1)'
             }} 
           />
