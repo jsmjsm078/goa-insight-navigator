@@ -34,7 +34,7 @@ const Reviews = () => {
   const [location, setLocation] = useState("baga");
   
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <Navbar />
       
       <div className="bg-gradient-to-r from-goa-blue to-goa-teal text-white py-8">
@@ -47,63 +47,83 @@ const Reviews = () => {
       </div>
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="mb-8">
-          <SentimentMeter 
-            title="Reviews" 
-            scores={{
-              positive: 50,
-              neutral: 35,
-              negative: 15
-            }} 
-          />
+        {/* Sentiment Meter Section with Glass Effect */}
+        <div className="relative overflow-hidden rounded-xl bg-gradient-to-bl from-goa-blue/10 via-goa-teal/5 to-goa-coral/10 p-1 mb-8">
+          <div className="backdrop-blur-sm bg-white/50 dark:bg-gray-950/50 rounded-lg p-6 border border-goa-teal/20">
+            <SentimentMeter 
+              title="Reviews" 
+              scores={{
+                positive: 50,
+                neutral: 35,
+                negative: 15
+              }} 
+            />
+          </div>
         </div>
 
-        <section>
+        {/* Review Sentiment Analysis Section */}
+        <section className="space-y-8">
           <h2 className="text-2xl font-semibold mb-6">Review Sentiment Analysis</h2>
-          <div className="grid grid-cols-1 gap-6">
-            <SentimentBarChart
-              title="Review Sentiment Distribution"
-              data={sampleReviewData}
-              filterOptions={LOCATIONS}
-              onFilterChange={setLocation}
-            />
+          <div className="grid grid-cols-1 gap-8">
+            {/* Bar Chart with Frosted Glass Effect */}
+            <div className="relative overflow-hidden rounded-xl bg-gradient-to-tr from-goa-coral/10 via-goa-sand/5 to-goa-palm/10 p-1">
+              <div className="backdrop-blur-sm bg-white/50 dark:bg-gray-950/50 rounded-lg p-6 border border-goa-coral/20">
+                <SentimentBarChart
+                  title="Review Sentiment Distribution"
+                  data={sampleReviewData}
+                  filterOptions={LOCATIONS}
+                  onFilterChange={setLocation}
+                />
+              </div>
+            </div>
+
+            {/* Word Maps Grid with Unique Styling */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <WordMap
-                title="Positive Keywords"
-                words={sampleWords}
-                filterOptions={[
-                  {
-                    label: "Platform",
-                    options: REVIEW_PLATFORMS,
-                    value: reviewPlatform,
-                    onChange: setReviewPlatform,
-                  },
-                  {
-                    label: "Location",
-                    options: LOCATIONS,
-                    value: location,
-                    onChange: setLocation,
-                  },
-                ]}
-              />
-              <WordMap
-                title="Negative Keywords"
-                words={sampleWords}
-                filterOptions={[
-                  {
-                    label: "Platform",
-                    options: REVIEW_PLATFORMS,
-                    value: reviewPlatform,
-                    onChange: setReviewPlatform,
-                  },
-                  {
-                    label: "Location",
-                    options: LOCATIONS,
-                    value: location,
-                    onChange: setLocation,
-                  },
-                ]}
-              />
+              <div className="relative overflow-hidden rounded-xl bg-gradient-to-bl from-goa-palm/10 via-goa-blue/5 to-goa-teal/10 p-1">
+                <div className="backdrop-blur-sm bg-white/50 dark:bg-gray-950/50 rounded-lg p-6 border border-goa-palm/20">
+                  <WordMap
+                    title="Positive Keywords"
+                    words={sampleWords}
+                    filterOptions={[
+                      {
+                        label: "Platform",
+                        options: REVIEW_PLATFORMS,
+                        value: reviewPlatform,
+                        onChange: setReviewPlatform,
+                      },
+                      {
+                        label: "Location",
+                        options: LOCATIONS,
+                        value: location,
+                        onChange: setLocation,
+                      },
+                    ]}
+                  />
+                </div>
+              </div>
+
+              <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-goa-sunset/10 via-goa-sand/5 to-goa-coral/10 p-1">
+                <div className="backdrop-blur-sm bg-white/50 dark:bg-gray-950/50 rounded-lg p-6 border border-goa-sunset/20">
+                  <WordMap
+                    title="Negative Keywords"
+                    words={sampleWords}
+                    filterOptions={[
+                      {
+                        label: "Platform",
+                        options: REVIEW_PLATFORMS,
+                        value: reviewPlatform,
+                        onChange: setReviewPlatform,
+                      },
+                      {
+                        label: "Location",
+                        options: LOCATIONS,
+                        value: location,
+                        onChange: setLocation,
+                      },
+                    ]}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
