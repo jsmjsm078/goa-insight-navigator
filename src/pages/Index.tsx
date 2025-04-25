@@ -1,12 +1,69 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { TrendingHashtags } from "@/components/charts/TrendingHashtags";
+import { KeyTalkingPoints } from "@/components/charts/KeyTalkingPoints";
+import { TourismTrends } from "@/components/charts/TourismTrends";
+import { Navbar } from "@/components/layout/Navbar";
+import { DashboardHeading } from "@/components/ui/dashboard-heading";
+import { Card } from "@/components/ui/card";
+import { ActivityHeatmap } from "@/components/maps/ActivityHeatmap";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-gray-50">
+      <Navbar />
+      
+      <div className="bg-gradient-to-r from-goa-blue to-goa-teal text-white py-8 sm:py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">
+              AI-Powered Tourist Sentiment Dashboard
+            </h1>
+            <p className="text-sm sm:text-base opacity-90">
+              Analyzing social media data to provide insights about Goa tourism trends and sentiments
+            </p>
+          </div>
+        </div>
       </div>
+      
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 -mt-6">
+        <Card className="p-4 sm:p-6 shadow-lg mb-8 animate-fade-in">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+            <div className="p-4 border-b md:border-b-0 md:border-r border-gray-200">
+              <p className="text-lg text-gray-500">Total Mentions</p>
+              <p className="text-3xl font-bold text-goa-blue">24,789</p>
+            </div>
+            <div className="p-4 border-b md:border-b-0 md:border-r border-gray-200">
+              <p className="text-lg text-gray-500">Positive Sentiment</p>
+              <p className="text-3xl font-bold text-goa-palm">76%</p>
+            </div>
+            <div className="p-4">
+              <p className="text-lg text-gray-500">Active Sources</p>
+              <p className="text-3xl font-bold text-goa-coral">14</p>
+            </div>
+          </div>
+        </Card>
+        
+        <div className="grid grid-cols-1 gap-6 sm:gap-8">          
+          <section className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
+            <TrendingHashtags />
+          </section>
+          
+          <section className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <KeyTalkingPoints />
+          </section>
+          
+          <section className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
+            <TourismTrends />
+          </section>
+          
+          <section className="animate-fade-in mt-8" style={{ animationDelay: "0.4s" }}>
+            <ActivityHeatmap />
+          </section>
+        </div>
+      </main>
+      
+      <footer className="bg-white border-t py-4 text-center text-sm text-gray-500">
+        <p>© 2025 Goa Insight Navigator | AI-Powered Tourism Analytics</p>
+      </footer>
     </div>
   );
 };
