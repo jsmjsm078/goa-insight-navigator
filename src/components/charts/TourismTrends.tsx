@@ -1,4 +1,3 @@
-
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -25,11 +24,11 @@ const data = [
 
 export function TourismTrends() {
   return (
-    <Card className="w-full shadow-md">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-xl font-bold text-gray-800">Tourism Trends (Yearly Comparison)</CardTitle>
-      </CardHeader>
-      <CardContent>
+    <div className="relative overflow-hidden rounded-xl bg-gradient-to-bl from-goa-coral/10 via-goa-sunset/5 to-goa-teal/10 p-1">
+      <div className="backdrop-blur-sm bg-white/50 dark:bg-gray-950/50 rounded-lg p-6 border border-goa-sunset/20">
+        <div className="pb-2">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">Tourism Trends (Yearly Comparison)</h2>
+        </div>
         <div className="h-[300px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart
@@ -58,6 +57,7 @@ export function TourismTrends() {
                 dot={{ r: 4 }} 
                 activeDot={{ r: 6 }}
                 connectNulls
+                className="hover:opacity-80 transition-opacity"
               />
               <Line 
                 type="monotone" 
@@ -68,6 +68,7 @@ export function TourismTrends() {
                 dot={{ r: 4 }} 
                 activeDot={{ r: 6 }}
                 connectNulls
+                className="hover:opacity-80 transition-opacity"
               />
               <Line 
                 type="monotone" 
@@ -78,11 +79,12 @@ export function TourismTrends() {
                 dot={{ r: 4 }} 
                 activeDot={{ r: 6 }}
                 connectNulls
+                className="hover:opacity-80 transition-opacity"
               />
             </LineChart>
           </ResponsiveContainer>
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }

@@ -128,12 +128,12 @@ export function TrendingHashtags() {
     : data;
 
   return (
-    <Card className="w-full shadow-md">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-xl font-bold text-gray-800">Trending Hashtags</CardTitle>
-        <DateRangeFilter date={dateRange} onDateChange={setDateRange} />
-      </CardHeader>
-      <CardContent>
+    <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-goa-blue/10 via-goa-teal/5 to-goa-coral/10 p-1">
+      <div className="backdrop-blur-sm bg-white/50 dark:bg-gray-950/50 rounded-lg p-6">
+        <div className="pb-2">
+          <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">Trending Hashtags</h2>
+          <DateRangeFilter date={dateRange} onDateChange={setDateRange} />
+        </div>
         <div className="h-[300px] w-full">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart
@@ -162,7 +162,12 @@ export function TrendingHashtags() {
                 content={<CustomTooltip />}
                 cursor={{ fill: 'rgba(155, 135, 245, 0.1)' }}
               />
-              <Bar dataKey="count" fill="#9b87f5" radius={[4, 4, 0, 0]} />
+              <Bar 
+                dataKey="count" 
+                fill="#0EA5E9" 
+                radius={[4, 4, 0, 0]}
+                className="hover:opacity-80 transition-opacity"
+              />
             </BarChart>
           </ResponsiveContainer>
         </div>
@@ -182,7 +187,7 @@ export function TrendingHashtags() {
         <div className="mt-4 text-center text-sm text-gray-500">
           Click on any bar to see detailed platform distribution
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 }
