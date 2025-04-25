@@ -1,8 +1,8 @@
+
 import { TrendingHashtags } from "@/components/charts/TrendingHashtags";
 import { KeyTalkingPoints } from "@/components/charts/KeyTalkingPoints";
 import { TourismTrends } from "@/components/charts/TourismTrends";
 import { Navbar } from "@/components/layout/Navbar";
-import { DashboardHeading } from "@/components/ui/dashboard-heading";
 import { Card } from "@/components/ui/card";
 import { ActivityHeatmap } from "@/components/maps/ActivityHeatmap";
 import { LocationsList } from "@/components/maps/LocationsList";
@@ -51,14 +51,15 @@ const Index = () => {
         </Card>
         
         <div className="grid grid-cols-1 gap-6 sm:gap-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2">
-              <section className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          {/* Equal height sections */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-[400px]">
+            <div className="md:col-span-2 h-full">
+              <section className="animate-fade-in h-full" style={{ animationDelay: "0.1s" }}>
                 <TrendingHashtags />
               </section>
             </div>
-            <div className="md:col-span-1">
-              <section className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <div className="md:col-span-1 h-full">
+              <section className="animate-fade-in h-full" style={{ animationDelay: "0.2s" }}>
                 <KeyTalkingPoints />
               </section>
             </div>
@@ -68,14 +69,15 @@ const Index = () => {
             <TourismTrends />
           </section>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="md:col-span-2">
-              <section className="animate-fade-in" style={{ animationDelay: "0.4s" }}>
+          {/* Equal height location sections */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 h-[500px]">
+            <div className="md:col-span-2 h-full">
+              <section className="animate-fade-in h-full" style={{ animationDelay: "0.4s" }}>
                 <ActivityHeatmap />
               </section>
             </div>
-            <div className="md:col-span-1">
-              <section className="animate-fade-in" style={{ animationDelay: "0.4s" }}>
+            <div className="md:col-span-1 h-full">
+              <section className="animate-fade-in h-full" style={{ animationDelay: "0.4s" }}>
                 <LocationsList />
               </section>
             </div>

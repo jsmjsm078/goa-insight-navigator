@@ -1,3 +1,4 @@
+
 import { MapPin } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -9,14 +10,20 @@ const locations = [
 
 export function ActivityHeatmap() {
   return (
-    <Card>
+    <Card className="h-full">
       <CardHeader>
         <CardTitle>Location Map</CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="relative w-full aspect-[16/9] bg-gradient-to-br from-goa-blue/20 to-goa-teal/20 rounded-lg overflow-hidden">
+      <CardContent className="h-[calc(100%-5rem)]">
+        <div className="relative w-full h-full rounded-lg overflow-hidden">
           {/* Map Background */}
-          <div className="absolute inset-0 bg-[url('/goa-map.jpg')] bg-cover bg-center opacity-30" />
+          <div 
+            className="absolute inset-0 bg-cover bg-center opacity-90" 
+            style={{ 
+              backgroundImage: 'url("https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&q=80")',
+              filter: 'saturate(1.2) brightness(1.1)'
+            }} 
+          />
           
           {/* Location Markers */}
           {locations.map((location) => (
