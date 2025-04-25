@@ -128,10 +128,10 @@ export function TrendingHashtags() {
     : data;
 
   return (
-    <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-goa-blue/10 via-goa-teal/5 to-goa-coral/10 p-1">
-      <div className="backdrop-blur-sm bg-white/50 dark:bg-gray-950/50 rounded-lg p-6">
+    <div className="relative overflow-hidden rounded-xl bg-gradient-diagonal p-1">
+      <div className="backdrop-blur-sm bg-white/50 rounded-lg p-6 border border-cool-accent/20">
         <div className="pb-2">
-          <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">Trending Hashtags</h2>
+          <h2 className="text-xl font-bold text-cool-primary">Trending Hashtags</h2>
           <DateRangeFilter date={dateRange} onDateChange={setDateRange} />
         </div>
         <div className="h-[300px] w-full">

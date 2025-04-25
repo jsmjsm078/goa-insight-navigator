@@ -9,15 +9,15 @@ export function Navbar() {
   const navItems = [
     { name: "Home", icon: <Home size={20} />, path: "/" },
     { name: "Sentiments", path: "/sentiments" },
-    { name: "Reviews", path: "/reviews" }  // Changed from "Surveys" to "Reviews"
+    { name: "Reviews", path: "/reviews" }
   ];
 
   return (
-    <nav className="bg-white shadow-sm border-b">
+    <nav className="bg-gradient-cool shadow-soft border-b border-cool-accent/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <span className="text-lg sm:text-xl font-bold text-goa-blue">Goa Insight Navigator</span>
+            <span className="text-lg sm:text-xl font-bold text-white">Goa Insight Navigator</span>
           </div>
           <div className="flex space-x-4 sm:space-x-8">
             {navItems.map((item) => (
@@ -27,8 +27,8 @@ export function Navbar() {
                 className={cn(
                   "inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium h-16",
                   location.pathname === item.path
-                    ? "border-goa-blue text-goa-blue"
-                    : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                    ? "border-cool-highlight text-cool-highlight"
+                    : "border-transparent text-white/80 hover:text-white hover:border-white/30"
                 )}
               >
                 {item.icon ? (

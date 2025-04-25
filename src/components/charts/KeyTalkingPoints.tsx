@@ -27,17 +27,17 @@ const words = [
 
 // Due to type complexity with the library, using a simpler approach
 const options = {
-  colors: ["#0EA5E9", "#06B6D4", "#F97316", "#65A30D", "#FB923C"],
+  colors: ["#5AB2FF", "#A0DEFF", "#CAF4FF", "#FFF9D0"],
   fontSizes: [12, 60],
   rotationAngles: [0, 90],
 } as any;
 
 export function KeyTalkingPoints() {
   return (
-    <div className="relative overflow-hidden rounded-xl bg-gradient-to-tr from-goa-palm/10 to-goa-sand/20 p-1">
-      <div className="backdrop-blur-sm bg-white/50 dark:bg-gray-950/50 rounded-lg p-6 border border-goa-sand/20">
+    <div className="relative overflow-hidden rounded-xl bg-gradient-soft p-1">
+      <div className="backdrop-blur-sm bg-white/50 rounded-lg p-6 border border-cool-accent/20">
         <div className="pb-2">
-          <h2 className="text-xl font-bold text-gray-800 dark:text-gray-100">Key Talking Points</h2>
+          <h2 className="text-xl font-bold text-cool-primary">Key Talking Points</h2>
         </div>
         <div className="h-[300px] w-full">
           <ReactWordcloud 
