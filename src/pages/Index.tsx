@@ -8,11 +8,18 @@ import { ActivityHeatmap } from "@/components/maps/ActivityHeatmap";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-100">
       <Navbar />
       
-      <div className="bg-gradient-to-r from-goa-blue to-goa-teal text-white py-8 sm:py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative bg-gradient-to-r from-goa-blue to-goa-teal text-white py-8 sm:py-12">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&q=80" 
+            alt="Goa Beach" 
+            className="w-full h-full object-cover opacity-20"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4">
               AI-Powered Tourist Sentiment Dashboard
@@ -25,7 +32,7 @@ const Index = () => {
       </div>
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 -mt-6">
-        <Card className="p-4 sm:p-6 shadow-lg mb-8 animate-fade-in">
+        <Card className="p-4 sm:p-6 mb-8 animate-fade-in bg-white/80 backdrop-blur-sm shadow-none border-0">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
             <div className="p-4 border-b md:border-b-0 md:border-r border-gray-200">
               <p className="text-lg text-gray-500">Total Mentions</p>
@@ -61,7 +68,7 @@ const Index = () => {
         </div>
       </main>
       
-      <footer className="bg-white border-t py-4 text-center text-sm text-gray-500">
+      <footer className="bg-white/80 backdrop-blur-sm border-t border-gray-200/20 py-4 text-center text-sm text-gray-500">
         <p>© 2025 Goa Insight Navigator | AI-Powered Tourism Analytics</p>
       </footer>
     </div>
