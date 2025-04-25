@@ -1,4 +1,3 @@
-
 import { Link, useLocation } from "react-router-dom";
 import { Home } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -9,11 +8,11 @@ export function Navbar() {
   const navItems = [
     { name: "Home", icon: <Home size={20} />, path: "/" },
     { name: "Sentiments", path: "/sentiments" },
-    { name: "Reviews", path: "/reviews" }  // Changed from "Surveys" to "Reviews"
+    { name: "Reviews", path: "/reviews" }
   ];
 
   return (
-    <nav className="bg-white shadow-sm border-b">
+    <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm shadow-sm border-b z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">

@@ -5,13 +5,14 @@ import { Navbar } from "@/components/layout/Navbar";
 import { DashboardHeading } from "@/components/ui/dashboard-heading";
 import { Card } from "@/components/ui/card";
 import { ActivityHeatmap } from "@/components/maps/ActivityHeatmap";
+import { LocationsList } from "@/components/maps/LocationsList";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar />
       
-      <div className="relative bg-gradient-to-r from-goa-blue to-goa-teal text-white py-8 sm:py-12">
+      <div className="relative bg-gradient-to-r from-goa-blue to-goa-teal text-white py-8 sm:py-12 mt-16">
         <div className="absolute inset-0 z-0">
           <img 
             src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&q=80" 
@@ -49,22 +50,36 @@ const Index = () => {
           </div>
         </Card>
         
-        <div className="grid grid-cols-1 gap-6 sm:gap-8">          
-          <section className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
-            <TrendingHashtags />
-          </section>
-          
-          <section className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            <KeyTalkingPoints />
-          </section>
+        <div className="grid grid-cols-1 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="md:col-span-2">
+              <section className="animate-fade-in" style={{ animationDelay: "0.1s" }}>
+                <TrendingHashtags />
+              </section>
+            </div>
+            <div className="md:col-span-1">
+              <section className="animate-fade-in" style={{ animationDelay: "0.2s" }}>
+                <KeyTalkingPoints />
+              </section>
+            </div>
+          </div>
           
           <section className="animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <TourismTrends />
           </section>
           
-          <section className="animate-fade-in mt-8" style={{ animationDelay: "0.4s" }}>
-            <ActivityHeatmap />
-          </section>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="md:col-span-2">
+              <section className="animate-fade-in" style={{ animationDelay: "0.4s" }}>
+                <ActivityHeatmap />
+              </section>
+            </div>
+            <div className="md:col-span-1">
+              <section className="animate-fade-in" style={{ animationDelay: "0.4s" }}>
+                <LocationsList />
+              </section>
+            </div>
+          </div>
         </div>
       </main>
       

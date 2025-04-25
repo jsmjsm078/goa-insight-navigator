@@ -1,4 +1,3 @@
-
 import { MapPin } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -12,7 +11,7 @@ export function ActivityHeatmap() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Popular Locations</CardTitle>
+        <CardTitle>Location Map</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="relative w-full aspect-[16/9] bg-gradient-to-br from-goa-blue/20 to-goa-teal/20 rounded-lg overflow-hidden">
