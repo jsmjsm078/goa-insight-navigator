@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import ReactWordcloud from "react-wordcloud";
 import { Options } from "react-wordcloud";
@@ -32,20 +31,19 @@ const options = {
   colors: ["#0EA5E9", "#06B6D4", "#F97316", "#65A30D", "#FB923C"],
   fontSizes: [12, 60],
   rotationAngles: [0, 90],
-} as any; // Using any to bypass strict typing issues
+} as unknown; // Using any to bypass strict typing issues
 
 export function KeyTalkingPoints() {
   return (
-    <Card className="w-full shadow-md">
+    <Card className="h-full w-full shadow-md">
       <CardHeader className="pb-2">
-        <CardTitle className="text-xl font-bold text-gray-800">Key Talking Points</CardTitle>
+        <CardTitle className="text-xl font-bold text-gray-800">
+          Key Talking Points
+        </CardTitle>
       </CardHeader>
       <CardContent>
         <div className="h-[300px] w-full">
-          <ReactWordcloud 
-            words={words} 
-            options={options} 
-          />
+          <ReactWordcloud words={words} options={options} />
         </div>
       </CardContent>
     </Card>
