@@ -1,11 +1,10 @@
-
 import { MapPin } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const locations = [
-  { name: "Baga Beach", x: "30%", y: "40%", mentions: Math.floor(Math.random() * 200 + 50) },
-  { name: "Fort Aguada", x: "20%", y: "45%", mentions: Math.floor(Math.random() * 200 + 50) },
-  { name: "Dudhsagar Falls", x: "70%", y: "30%", mentions: Math.floor(Math.random() * 200 + 50) }
+  // { name: "Baga Beach", x: "30%", y: "40%", mentions: Math.floor(Math.random() * 200 + 50) },
+  // { name: "Fort Aguada", x: "20%", y: "45%", mentions: Math.floor(Math.random() * 200 + 50) },
+  // { name: "Dudhsagar Falls", x: "70%", y: "30%", mentions: Math.floor(Math.random() * 200 + 50) }
 ];
 
 export function ActivityHeatmap() {
@@ -17,16 +16,17 @@ export function ActivityHeatmap() {
       <CardContent className="pb-6">
         <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
           {/* Map Background */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center opacity-90" 
-            style={{ 
-              backgroundImage: 'url("/lovable-uploads/49b75e28-cfb7-4450-9fb0-a9649fe3622e.png")',
-              filter: 'saturate(1.2) brightness(1.1)'
-            }} 
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-90"
+            style={{
+              backgroundImage:
+                'url("/lovable-uploads/49b75e28-cfb7-4450-9fb0-a9649fe3622e.png")',
+              filter: "saturate(1.2) brightness(1.1)",
+            }}
           />
-          
+
           {/* Location Markers */}
-          {locations.map((location) => (
+          {locations?.map((location) => (
             <div
               key={location.name}
               className="absolute group"
