@@ -2,6 +2,7 @@ import { MapPin } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const locations = [
+  { name: "Vasco da Gama", x: "18.6%", y: "20.3%", mentions: 980 },
   // { name: "Baga Beach", x: "30%", y: "40%", mentions: Math.floor(Math.random() * 200 + 50) },
   // { name: "Fort Aguada", x: "20%", y: "45%", mentions: Math.floor(Math.random() * 200 + 50) },
   // { name: "Dudhsagar Falls", x: "70%", y: "30%", mentions: Math.floor(Math.random() * 200 + 50) }

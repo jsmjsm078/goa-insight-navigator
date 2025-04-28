@@ -8,7 +8,8 @@ const locations = [
   { name: "Anjuna Beach", mentions: 1750 },
   { name: "Chapora Fort", mentions: 1320 },
   { name: "Candolim Beach", mentions: 1105 },
-  { name: "Basilica of Bom Jesus", mentions: 980 },
+  // { name: "Basilica of Bom Jesus", mentions: 980 },
+  { name: "Vasco da Gama", mentions: 980 },
 ];
 
 export function LocationsList() {
