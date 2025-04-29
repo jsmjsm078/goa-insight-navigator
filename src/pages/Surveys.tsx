@@ -36,7 +36,7 @@ const Surveys = () => {
       </main>
       
       <footer className="bg-white border-t py-4 text-center text-sm text-gray-500">
-        <p>© 2025 Goa Insight Navigator | AI-Powered Tourism Analytics</p>
+        <p>© 2025 MogPulse | AI-Powered Tourism Analytics</p>
       </footer>
     </div>
   );

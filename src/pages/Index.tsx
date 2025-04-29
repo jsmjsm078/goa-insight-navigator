@@ -114,7 +114,7 @@ const Index = () => {
       </main>
 
       <footer className="bg-white/80 backdrop-blur-sm border-t border-gray-200/20 py-4 text-center text-sm text-gray-500">
-        <p>© 2025 Goa Insight Navigator | AI-Powered Tourism Analytics</p>
+        <p>© 2025 MogPulse | AI-Powered Tourism Analytics</p>
       </footer>
     </div>
   );
