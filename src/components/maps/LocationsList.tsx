@@ -2,14 +2,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MapPin } from "lucide-react";
 
 const locations = [
-  { name: "Baga Beach", mentions: 2456 },
-  { name: "Fort Aguada", mentions: 1890 },
-  { name: "Dudhsagar Falls", mentions: 1654 },
-  { name: "Anjuna Beach", mentions: 1750 },
-  { name: "Chapora Fort", mentions: 1320 },
-  { name: "Candolim Beach", mentions: 1105 },
-  // { name: "Basilica of Bom Jesus", mentions: 980 },
-  { name: "Vasco da Gama", mentions: 980 },
+  { name: "Manali", mentions: 2456 },
+  { name: "Shimla", mentions: 1890 },
+  { name: "Dharamshala", mentions: 1654 },
+  { name: "Kullu", mentions: 1750 },
+  { name: "Kasol", mentions: 1320 },
+  { name: "Rohtang Pass", mentions: 1105 },
+  { name: "Spiti Valley", mentions: 980 },
 ];
 
 export function LocationsList() {
